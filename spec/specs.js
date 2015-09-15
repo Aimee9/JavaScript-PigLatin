@@ -24,7 +24,14 @@ describe("startWithVowel", function() {
 
 
 describe('startWithConsonant', function(){
-  it("will loop until finds a vowel and put consonants at the end", function() {
+  it("will take first letter off and place at end of word", function() {
     expect(startWithConsonant(["b", "a", "n", "a", "n", "a"])).to.eql(["a", "n", "a", "n", "a", "b"]);
+  });
+});
+
+
+describe('startWithTwoOrMoreCons', function(){
+  it("will loop through letters until finds a vowel and put consonants at the end", function() {
+    expect(startWithTwoOrMoreCons(["s", "p", "l", "i", "t"])).to.eql(["i", "t", "s", "p", "l"]);
   });
 });
