@@ -18,12 +18,13 @@ describe('addAY', function(){
 
 describe("startWithVowel", function() {
   it("will return true if array starts with a vowel", function() {
-    expect(startWithVowel("opple")).to.equal(true);
+    expect(startWithVowel("apple")).to.equal(true);
   });
 });
 
-// describe('wordOneCon', function(){
-//   it("will loop until finds a vowel", function() {
-//     expect(wordOneCon("banana")).to.eql("ananabay");
-//   });
-// });
+
+describe('startWithConsonant', function(){
+  it("will loop until finds a vowel and put consonants at the end", function() {
+    expect(startWithConsonant(["b", "a", "n", "a", "n", "a"])).to.eql(["a", "n", "a", "n", "a", "b"]);
+  });
+});

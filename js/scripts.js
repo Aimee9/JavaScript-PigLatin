@@ -1,17 +1,24 @@
 var lowerWord = function(string) {
   var stringLower = string.toLowerCase();
-    return stringLower;
-  }
+  return stringLower;
+}
 
-  var splitWord = function(string) {
-    var stringArray = string.split("");
-    return stringArray;
-  }
+var splitWord = function(string) {
+  var stringArray = string.split("");
+  return stringArray;
+}
 
 var startWithVowel = function(lowerWord) {
   if(lowerWord.charAt(0) === "a" || lowerWord.charAt(0) === "e" || lowerWord.charAt(0) === "i" ||lowerWord.charAt(0) === "o" ||lowerWord.charAt(0) === "u" ) {
     return true
   }
+}
+
+var startWithConsonant = function(splitWord) {
+    var consonant = splitWord.shift();
+    splitWord.push(consonant);
+
+  return splitWord;
 }
 
 // var wordOneCon = function(word) {
