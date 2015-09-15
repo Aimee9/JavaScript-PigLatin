@@ -10,11 +10,6 @@ describe('splitWord', function(){
   });
 });
 
-describe('addAY', function(){
-  it("will put ay at the end of string array", function() {
-    expect(addAY("apple")).to.eql("appleay");
-  });
-});
 
 describe("startWithVowel", function() {
   it("will return true if array starts with a vowel", function() {
@@ -34,4 +29,21 @@ describe('startWithTwoOrMoreCons', function(){
   it("will loop through letters until finds a vowel and put consonants at the end", function() {
     expect(startWithTwoOrMoreCons(["s", "p", "l", "i", "t"])).to.eql(["i", "t", "s", "p", "l"]);
   });
+
+  it("will move qu to end of word", function() {
+    expect(startWithTwoOrMoreCons(["q", "u", "a", "i", "n", "t"])).to.eql([ "a", "i", "n", "t", "q", "u"]);
+  })
 });
+
+
+describe('pigLatin', function(){
+  it("will put ay at the end of string", function() {
+    expect(pigLatin("strudel")).to.eql("udelstray");
+  });
+});
+// 
+// describe('backToWord', function(){
+//   it("will convert back to a string", function() {
+//     expect(backToWord("a", "b", "c")).to.equal("abc");
+//   });
+// });

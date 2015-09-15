@@ -3,8 +3,8 @@ var lowerWord = function(string) {
   return stringLower;
 };
 
-var splitWord = function(string) {
-  var stringArray = string.split("");
+var splitWord = function(lowerWord) {
+  var stringArray = lowerWord.split("");
   return stringArray;
 };
 
@@ -14,29 +14,53 @@ var startWithVowel = function(splitWord) {
 };
 
 var startWithConsonant = function(splitWord) {
-    var consonant = splitWord.shift();
-    splitWord.push(consonant);
+  var consonant = splitWord.shift();
+  splitWord.push(consonant);
 
   return splitWord;
 };
 
 var startWithTwoOrMoreCons = function(splitWord) {
+
   while(!startWithVowel(splitWord)) {
-    startWithConsonant(splitWord);
+    if(splitWord[0] === ("q")) {
+      var qStart = splitWord.shift();
+      splitWord.push(qStart);
+      var uStart = splitWord.shift();
+      splitWord.push(uStart);
+      return splitWord;
+    }
+    else {
+      startWithConsonant(splitWord);
+    }
   } return splitWord;
 };
 
 
 
-// var wordOneCon = function(word) {
+// var backToWord = function(splitword) {
+//   return splitword.toString();
+// }
 //
+//
+// var addAY = function(word) {
+//   return word + "ay";
 // }
 
-
-var addAY = function(word) {
-  var addAYToEnd = word.concat("a", "y");
-    return addAYToEnd;
-}
+var pigLatin = function(word) {
+  var word = lowerWord(word);
+  var splitting = splitWord(word);
+  if (splitting(startWithVowel) = true) {
+    return splitting + "ay"}
+    else {
+      startWithTwoOrMoreCons(splitting);
+      return splitting + "ay";
+    }
+  // if it starts with a vowel
+    // return word + ay
+  //  else if its a consonant
+    // return pig latinized version
+};
 
 
 $(document).ready(function() {
