@@ -32,20 +32,22 @@ describe('startWithTwoOrMoreCons', function(){
 
   it("will move qu to end of word", function() {
     expect(startWithTwoOrMoreCons(["q", "u", "a", "i", "n", "t"])).to.eql([ "a", "i", "n", "t", "q", "u"]);
-  })
-});
+  });
 
-
-describe('addAy', function(){
-  it("will put ay at the end of the char array", function() {
-    expect(addAy("abc")).to.eql("abcay
-
-    ");
+  it("will treat y as a vowel if y is in the middle of the word", function() {
+    expect(startWithTwoOrMoreCons(["g", "l", "y", "p", "h"])).to.eql(["y", "p", "h", "g", "l"]);
   });
 });
 
-describe('backToWord', function(){
-  it("will convert back to a string", function() {
-    expect(backToWord(["a", "b", "c"])).to.equal("abc");
+
+describe('backToWordAndAddAy', function(){
+  it("will convert back to a string and add ay to the end of the word", function() {
+    expect(backToWordAndAddAy(["a", "b", "c"])).to.equal("abcay");
+  });
+});
+
+describe('pigLatin', function(){
+  it("will convert back to a string and add ay to the end of the word", function() {
+    expect(pigLatin("pigLatin")).to.equal("iglatinpay");
   });
 });

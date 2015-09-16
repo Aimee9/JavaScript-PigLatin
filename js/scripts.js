@@ -9,7 +9,7 @@ var splitWord = function(lowerWord) {
 };
 
 var startWithVowel = function(splitWord) {
-  var vowels = ["a", "e", "i", "o", "u"]
+  var vowels = ["a", "e", "i", "o", "u", "y"]
   return vowels.indexOf(splitWord[0]) !== -1;
 };
 
@@ -30,44 +30,41 @@ var startWithTwoOrMoreCons = function(splitWord) {
       splitWord.push(uStart);
       return splitWord;
     }
+    else if(splitWord[0] === ("y")) {
+      var yStart = splitWord.shift();
+      splitWord.push(yStart);
+      return splitWord;
+    }
     else {
       startWithConsonant(splitWord);
     }
   } return splitWord;
 };
 
-var backToWord = function(splitWord) {
-  return splitWord.toString().replace(/[^\w]/g, "");
+var backToWordAndAddAy = function(splitWord) {
+  return splitWord.toString().replace(/[^\w]/g, "") + "ay";
 }
-
-var addAy = function(backToWord) {
-  return backToWord + "ay";
-};
 
 var pigLatin = function(word) {
   var word = lowerWord(word);
   var splitting = splitWord(word);
-  if (splitting(startWithVowel) = true) {
-    return splitting + "ay"}
-    else {
+  if (startWithVowel(splitting) === true) {
+    return backToWordAndAddAy(splitting);
+    } else {
       startWithTwoOrMoreCons(splitting);
-      return splitting + "ay";
+      return backToWordAndAddAy(splitting);
     }
-  // if it starts with a vowel
-    // return word + ay
-  //  else if its a consonant
-    // return pig latinized version
 };
 
 
 $(document).ready(function() {
-  $("form#factorial").submit(function(event) {
-    var number= parseInt($("input#number").val());
-    var result = factorial(number);
+  $("form#pigLatin").submit(function(event) {
+    $(".result").remove();
+    var word= ($("input#word").val());
+    var result = pigLatin(word);
 
-      $(".number").text(number)
-      $(".final").text(result)
-       $("#result").show()
+      $(".pigWord").text(result);
+       $("#result").show();
 
 
     event.preventDefault();
