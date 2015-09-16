@@ -9,7 +9,7 @@ var splitWord = function(lowerWord) {
 };
 
 var startWithVowel = function(splitWord) {
-  var vowels = ["a", "e", "i", "o", "u", "y"]
+  var vowels = ["a", "e", "i", "o", "u"]
   return vowels.indexOf(splitWord[0]) !== -1;
 };
 
@@ -22,6 +22,11 @@ var startWithConsonant = function(splitWord) {
 
 var startWithTwoOrMoreCons = function(splitWord) {
 
+if(splitWord[0] === ("y")) {
+  var yStart = splitWord.shift();
+  splitWord.push(yStart);
+  return splitWord;
+} else {
   while(!startWithVowel(splitWord)) {
     if(splitWord[0] === ("q")) {
       var qStart = splitWord.shift();
@@ -31,14 +36,13 @@ var startWithTwoOrMoreCons = function(splitWord) {
       return splitWord;
     }
     else if(splitWord[0] === ("y")) {
-      var yStart = splitWord.shift();
-      splitWord.push(yStart);
       return splitWord;
     }
     else {
       startWithConsonant(splitWord);
     }
   } return splitWord;
+}
 };
 
 var backToWordAndAddAy = function(splitWord) {

@@ -37,6 +37,10 @@ describe('startWithTwoOrMoreCons', function(){
   it("will treat y as a vowel if y is in the middle of the word", function() {
     expect(startWithTwoOrMoreCons(["g", "l", "y", "p", "h"])).to.eql(["y", "p", "h", "g", "l"]);
   });
+
+  it("will treat y as a consonant if it is the first letter in the word", function() {
+    expect(startWithTwoOrMoreCons(["y", "e", "l", "l", "o", "w"])).to.eql(["e", "l", "l", "o", "w", "y"]);
+  });
 });
 
 
